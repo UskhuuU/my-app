@@ -2,6 +2,7 @@ import React from "react";
 import { Text, TextInput, View } from "react-native";
 import { useSignIn } from "@clerk/clerk-expo";
 import { Button } from "react-native-paper";
+import SignInWithOAuth from "./SignInWithOAuth";
 
 export default function SignInScreen() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -19,8 +20,6 @@ export default function SignInScreen() {
         identifier: emailAddress,
         password,
       });
-      // This is an important step,
-      // This indicates the user is signed in
       await setActive({ session: completeSignIn.createdSessionId });
     } catch (err) {
       console.log(err);
@@ -68,6 +67,7 @@ export default function SignInScreen() {
       <Button mode="contained" onPress={onSignInPress}>
         <Text>Sign in</Text>
       </Button>
+      <SignInWithOAuth />
     </View>
   );
 }

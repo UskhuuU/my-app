@@ -5,12 +5,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ClerkProvider, SignedOut, SignedIn } from "@clerk/clerk-expo";
-import SignUpScreen from "./SignUpScreen";
-import CommentsScreen from "./CommentsScreen";
-import DetailsScreen from "./DetailsScreen";
-import HomeScreen from "./HomeScreen";
-import SignInScreen from "./SignInScreen";
-import ProfileScreen from "./ProfileScreen";
+import SignUpScreen from "./components/SignUpScreen";
+import CommentsScreen from "./components/CommentsScreen";
+import DetailsScreen from "./components/DetailsScreen";
+import HomeScreen from "./components/HomeScreen";
+import SignInScreen from "./components/SignInScreen";
+import ProfileScreen from "./components/ProfileScreen";
 
 const CLERK_PUBLISHABLE_KEY =
   "pk_test_c2hhcmluZy1iZWFyLTkuY2xlcmsuYWNjb3VudHMuZGV2JA";

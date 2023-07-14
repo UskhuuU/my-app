@@ -3,6 +3,7 @@ import { Text, TextInput, View } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
 import { Button } from "react-native-paper";
 
+
 export default function SignUpScreen({ onSignIn, navigation }) {
   const { isLoaded, signUp, setActive } = useSignUp();
 
@@ -33,11 +34,6 @@ export default function SignUpScreen({ onSignIn, navigation }) {
     }
   };
 
-  // const goToSignIn = () => {
-  //   // onSignIn;
-  //   navigation.push("SignIn");
-  // };
-  // This verifies the user using email code that is delivered.
   const onPressVerify = async () => {
     if (!isLoaded) {
       return;

@@ -1,8 +1,19 @@
-import { View, Text, ScrollView } from "react-native";
-import { Card } from "react-native-paper";
+import { View, Text, ScrollView, Alert } from "react-native";
+import { useClerk, useUser } from "@clerk/clerk-expo";
+import { Card, Button } from "react-native-paper";
 import { Image } from "expo-image";
+import EditProfileScreen from "./EditProfileScreen";
 
 export default function ProfileScreen() {
+  const { signOut } = useClerk;
+  const { user } = useUser;
+  console.log(JSON.stringify(user, null, 4));
+  function HandleSignOut() {
+    Alert.alert("Гарах уу?", null, [
+      { text: "Үгүй", style: "cancel" },
+      { text: "Гарах", onPress: () => signOut() },
+    ]);
+  }
   return (
     <ScrollView>
       <View style={{ marginHorizontal: 20 }}>
@@ -28,7 +39,7 @@ export default function ProfileScreen() {
               <View style={{ display: "flex", flexDirection: "row" }}>
                 <View style={{ marginLeft: 10 }}>
                   <Text style={{ fontSize: 20, marginTop: 35, color: "white" }}>
-                    Usukh-Ireedui
+                    Uskhuu
                   </Text>
                   <Text style={{ fontSize: 10, marginTop: 5, color: "white" }}>
                     uskhuubatsuuri@gmail.com
@@ -40,18 +51,33 @@ export default function ProfileScreen() {
           <View>
             <Card>
               <View style={{ display: "flex", flexDirection: "row" }}>
-                <View style={{ marginLeft: 10 }}>
-                  <Text style={{ fontSize: 20, marginTop: 20 }}>
-                    My account
-                  </Text>
+                <View>
+                  <Button onPress={() => navigation.push(EditProfileScreen)}>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        marginTop: 20,
+                        color: "black",
+                        marginLeft: -15,
+                      }}
+                    >
+                      My account
+                    </Text>
+                  </Button>
                   <Text
-                    style={{ fontSize: 10, marginVertical: 5, color: "gray" }}
+                    style={{
+                      fontSize: 10,
+                      marginLeft: 10,
+                      marginVertical: 5,
+                      color: "gray",
+                      marginTop: -5,
+                    }}
                   >
                     Make changes to your account
                   </Text>
                 </View>
               </View>
-              <View style={{ display: "flex", flexDirection: "row" }}>
+              {/* <View style={{ display: "flex", flexDirection: "row" }}>
                 <View style={{ marginLeft: 10 }}>
                   <Text style={{ fontSize: 20, marginTop: 20 }}>
                     Saved Beneficiary
@@ -62,8 +88,8 @@ export default function ProfileScreen() {
                     Manage your saved account
                   </Text>
                 </View>
-              </View>
-              <View style={{ display: "flex", flexDirection: "row" }}>
+              </View> */}
+              {/* <View style={{ display: "flex", flexDirection: "row" }}>
                 <View style={{ marginLeft: 10 }}>
                   <Text style={{ fontSize: 20, marginTop: 20 }}>
                     Face ID / Touch ID
@@ -74,8 +100,8 @@ export default function ProfileScreen() {
                     Manage your device security
                   </Text>
                 </View>
-              </View>
-              <View style={{ display: "flex", flexDirection: "row" }}>
+              </View> */}
+              {/* <View style={{ display: "flex", flexDirection: "row" }}>
                 <View style={{ marginLeft: 10 }}>
                   <Text style={{ fontSize: 20, marginTop: 20 }}>
                     Two-Factor Authentication
@@ -86,12 +112,26 @@ export default function ProfileScreen() {
                     Further secure your account for safety
                   </Text>
                 </View>
-              </View>
+              </View> */}
               <View style={{ display: "flex", flexDirection: "row" }}>
-                <View style={{ marginLeft: 10 }}>
-                  <Text style={{ fontSize: 20, marginTop: 20 }}>Log out </Text>
+                <View>
+                  <Text>
+                    <Button onPress={HandleSignOut}>
+                      <Text
+                        style={{ fontSize: 20, marginTop: 20, color: "black" }}
+                      >
+                        Log Out
+                      </Text>
+                    </Button>
+                  </Text>
                   <Text
-                    style={{ fontSize: 10, marginVertical: 5, color: "gray" }}
+                    style={{
+                      fontSize: 10,
+                      marginVertical: 5,
+                      color: "gray",
+                      marginLeft: 10,
+                      marginTop: -5,
+                    }}
                   >
                     Further secure your account for safety
                   </Text>
